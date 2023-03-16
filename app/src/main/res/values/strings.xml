@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CardInfoApp</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inputBINtext">Введите BIN карты</string>
+    <string name="make_request_text">Отправить запрос</string>
+    <string name="requestHistory_text">История запросов</string>
+    <string name="binTextView_text">BIN</string>
+    <string name="sheme_header_text">sheme/header</string>
+    <string name="typeText">type</string>
+    <string name="bankText">bank</string>
+    <string name="brand_text">Brand</string>
+    <string name="prepaid_text">Prepaid</string>
+    <string name="country_text">country</string>
+    <string name="latitude">(latitude: %1$d, longitude: %2$d)</string>
+    <string name="length_text">length</string>
+    <string name="luhn_text">luhn</string>
+    <string name="card_number_text">Card number</string>
+    <string name="newRequest_text">Новый запрос</string>
+    <string name="requestInfoFragment_header_text">Информация о запросе</string>
+</resources>
