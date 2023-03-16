@@ -1,4 +1,4 @@
-package com.example.cardinfoapp.room
+package com.example.cardinfoapp.data.room
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -6,7 +6,7 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface Dao {
+interface CardDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(card: CardItemRoom)
 

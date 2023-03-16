@@ -1,4 +1,4 @@
-package com.example.cardinfoapp.retrofit.models
+package com.example.cardinfoapp.data.retrofit.models
 
 data class Country(
     val alpha2: String,

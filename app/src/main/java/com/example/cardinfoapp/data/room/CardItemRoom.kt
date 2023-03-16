@@ -1,4 +1,4 @@
-package com.example.cardinfoapp.room
+package com.example.cardinfoapp.data.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,9 +9,9 @@ data class CardItemRoom(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     @ColumnInfo(name = "length")
-    val length: String,
+    val length: Int,
     @ColumnInfo(name = "luhn")
-    val luhn: String,
+    val luhn: Boolean,
     @ColumnInfo(name = "sheme")
     val sheme: String,
     @ColumnInfo(name = "type")
@@ -19,7 +19,7 @@ data class CardItemRoom(
     @ColumnInfo(name = "brand")
     val brand: String,
     @ColumnInfo(name = "prepaid")
-    val prepaid: String,
+    val prepaid: Boolean,
     @ColumnInfo(name = "numeric")
     val numeric: String,
     @ColumnInfo(name = "alpha2")

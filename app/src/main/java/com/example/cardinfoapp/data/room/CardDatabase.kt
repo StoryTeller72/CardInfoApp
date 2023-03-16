@@ -1,4 +1,4 @@
-package com.example.cardinfoapp.room
+package com.example.cardinfoapp.data.room
 
 import android.content.Context
 import androidx.room.Database
@@ -6,21 +6,21 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [CardItemRoom::class], version = 1)
+@Database(entities = [CardItemRoom::class], version = 1, exportSchema = false)
 abstract class CardDatabase: RoomDatabase() {
 
-    abstract fun cardDao():Dao
+    abstract fun getDao(): CardDao
 
     companion object{
         @Volatile
-        var INSTANCE: CardDatabase? = null
+        private var INSTANCE: CardDatabase? = null
 
-        fun getDatabase(context: Context): CardDatabase{
-            return INSTANCE?: synchronized(this){
+        fun getDatabase(context: Context): CardDatabase {
+            return INSTANCE ?: synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CardDatabase::class.java,
-                    "cardDatabase"
+                    "card_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

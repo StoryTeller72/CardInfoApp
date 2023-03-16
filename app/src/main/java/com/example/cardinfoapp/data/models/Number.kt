@@ -1,4 +1,4 @@
-package com.example.cardinfoapp.retrofit.models
+package com.example.cardinfoapp.data.retrofit.models
 
 data class Number(
     val length: Int,
