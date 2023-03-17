@@ -19,9 +19,8 @@ class CardRepositoryRoomImpl(private val roomDao: CardDao) : CardRepositoryInter
     override fun getAllCard() = roomDao.getAllCards().asLiveData()
 
     override suspend fun addNewCard(cardRetrofit: CardInfoRetrofit, bin: String) {
-        val calendar = Calendar.getInstance()
-        val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy")
-        val dateTime = simpleDateFormat.format(calendar.time).toString()
+        val dateTime = LocalDate.now().toString()
+
         val card = Converter().cardInfoRetrofitToCardItemRoom(cardRetrofit, dateTime, bin)
         roomDao.insertItem(card)
     }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/requestFragment">
+
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.cardinfoapp.presentation.fragments.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" >
+        <action
+            android:id="@+id/action_requestFragment_to_cardInfoFragment"
+            app:destination="@id/cardInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardInfoFragment"
+        android:name="com.example.cardinfoapp.presentation.fragments.CardInfoFragment"
+        android:label="fragment_card_info"
+        tools:layout="@layout/fragment_card_info" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.cardinfoapp.presentation.fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+</navigation>
