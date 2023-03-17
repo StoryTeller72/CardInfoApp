@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey
 data class CardItemRoom(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
+    @ColumnInfo(name = "bin")
+    val bin: String,
     @ColumnInfo(name = "length")
     val length: Int,
     @ColumnInfo(name = "luhn")

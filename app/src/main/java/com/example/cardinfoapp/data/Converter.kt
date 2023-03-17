@@ -4,9 +4,10 @@ import com.example.cardinfoapp.data.retrofit.models.CardInfoRetrofit
 import com.example.cardinfoapp.data.room.CardItemRoom
 
 class Converter {
-    fun cardInfoRetrofitToCardItemRoom(cardRetrofit: CardInfoRetrofit, date: String): CardItemRoom =
+    fun cardInfoRetrofitToCardItemRoom(cardRetrofit: CardInfoRetrofit, date: String, bin: String): CardItemRoom =
         CardItemRoom(
             id = null,
+            bin = bin,
             length = cardRetrofit.number.length,
             luhn = cardRetrofit.number.luhn,
             sheme = cardRetrofit.scheme,

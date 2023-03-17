@@ -24,33 +24,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var card: CardInfoRetrofit
-        var cardRoom: CardItemRoom
-        val sdf = SimpleDateFormat("dd-MM-yyyy")
-        val date = sdf.format(Date())
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(Constance.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val db = CardDatabase.getDatabase(this)
-        val cardApi = retrofit.create(CardInfoApi::class.java)
-
-        binding.newRequestButtonRequestFragmentInfo.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                card = cardApi.getCardByBin("45717360")
-                runOnUiThread{
-                    binding.bankInfoFragmentRequestInfo.text = card.bank.name
-                    binding.emojiTextViewFragmentRequestInfo.text = card.country.emoji
-                    binding.bankNumberSiteInfoFragmentRequestInfo.text = date
-                }
-                cardRoom = Converter().cardInfoRetrofitToCardItemRoom(card, date)
-
-                coroutineScope {
-                    db.getDao().insertItem(cardRoom)
-                }
-            }
-        }
+//        var card: CardInfoRetrofit
+//        var cardRoom: CardItemRoom
+//        val sdf = SimpleDateFormat("dd-MM-yyyy")
+//
+//        val date = sdf.format(Date())
+//
+//        val db = CardDatabase.getDatabase(this)
+//        val cardApi = retrofit.create(CardInfoApi::class.java)
+//
+//        binding.newRequestButtonRequestFragmentInfo.setOnClickListener {
+//            CoroutineScope(Dispatchers.IO).launch {
+//                card = cardApi.getCardByBin("45717360")
+//                runOnUiThread{
+//                    binding.bankInfoFragmentRequestInfo.text = card.bank.name
+//                    binding.emojiTextViewFragmentRequestInfo.text = card.country.emoji
+//                    binding.bankNumberSiteInfoFragmentRequestInfo.text = date
+//                }
+//                cardRoom = Converter().cardInfoRetrofitToCardItemRoom(card, date)
+//
+//                coroutineScope {
+//                    db.getDao().insertItem(cardRoom)
+//                }
+//            }
+//        }
     }
 }

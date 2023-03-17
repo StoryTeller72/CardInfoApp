@@ -13,7 +13,7 @@ interface CardDao {
     @Query("SELECT * FROM cards")
     fun getAllCards(): Flow<List<CardItemRoom>>
 
-    @Query("SELECT * from cards WHERE id = :id")
-    fun getCard(id: Int): Flow<CardItemRoom>
+    @Query("SELECT * from cards WHERE bin = :bin")
+    fun getCard(bin: String): Flow<CardItemRoom>
 
 }
