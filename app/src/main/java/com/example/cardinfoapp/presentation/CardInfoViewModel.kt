@@ -1,16 +1,11 @@
 package com.example.cardinfoapp.presentation
 
-import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.cardinfoapp.data.repository.CardRepositoryRoomImpl
 import com.example.cardinfoapp.data.retrofit.CardInfoApi
 import com.example.cardinfoapp.data.room.CardItemRoom
 import com.example.cardinfoapp.domain.MakeResponseUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CardInfoViewModel(
@@ -18,9 +13,12 @@ class CardInfoViewModel(
     private val repositoryRoomImpl: CardRepositoryRoomImpl
     ): ViewModel()
 {
-    private val _currentBin = MutableLiveData<String>()
-    val currentBin: LiveData<String>
-    get() = _currentBin
+
+
+    private var _currentCard = MutableLiveData<CardItemRoom>()
+    val currentCard: LiveData<CardItemRoom>
+        get() = _currentCard
+
 
     private val _allCardsLis = repositoryRoomImpl.getAllCard()
     val allCard: LiveData<List<CardItemRoom>>
@@ -29,6 +27,14 @@ class CardInfoViewModel(
     fun makeResponse(bin: String){
        makeResponseUseCase.execute(bin)
     }
+
+    fun getCard(id:Int){
+//        Log.d("testDate", bin)
+        viewModelScope.launch {
+            _currentCard.value = repositoryRoomImpl.getCard(id)
+            Log.d("testDate", "view model${_currentCard.value.toString()}")
+        }
+    }
 }
 
 class CardInfoViewModelFactory(
@@ -36,6 +42,7 @@ class CardInfoViewModelFactory(
     private val retrofitApi: CardInfoApi
     ): ViewModelProvider.Factory{
         private val makeResponseUseCase = MakeResponseUseCase(retrofitApi, repository)
+
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CardInfoViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")

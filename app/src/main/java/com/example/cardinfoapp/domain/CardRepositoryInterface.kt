@@ -9,5 +9,5 @@ interface CardRepositoryInterface {
 
     suspend fun addNewCard(cardRetrofit: CardInfoRetrofit, bin: String)
 
-    fun getCard(bin: String): LiveData<CardItemRoom>
+    suspend fun getCard(id: Int): CardItemRoom
 }

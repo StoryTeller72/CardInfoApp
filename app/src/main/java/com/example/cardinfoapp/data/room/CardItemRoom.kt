@@ -11,9 +11,9 @@ data class CardItemRoom(
     @ColumnInfo(name = "bin")
     val bin: String,
     @ColumnInfo(name = "length")
-    val length: Int,
+    val length: Int?,
     @ColumnInfo(name = "luhn")
-    val luhn: Boolean,
+    val luhn: Boolean?,
     @ColumnInfo(name = "sheme")
     val sheme: String,
     @ColumnInfo(name = "type")
@@ -21,7 +21,7 @@ data class CardItemRoom(
     @ColumnInfo(name = "brand")
     val brand: String,
     @ColumnInfo(name = "prepaid")
-    val prepaid: Boolean,
+    val prepaid: Boolean?,
     @ColumnInfo(name = "numeric")
     val numeric: String,
     @ColumnInfo(name = "alpha2")
@@ -33,9 +33,9 @@ data class CardItemRoom(
     @ColumnInfo(name = "currence")
     val currency: String,
     @ColumnInfo(name = "latitude")
-    val latitude: Int,
+    val latitude: Int?,
     @ColumnInfo(name = "longitude")
-    val longitude:Int,
+    val longitude:Int?,
     @ColumnInfo(name = "bankName")
     val bankName: String,
     @ColumnInfo(name = "url")
