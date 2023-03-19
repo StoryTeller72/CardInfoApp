@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.CardInfoFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/firstColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent = "0.05"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/SecondColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent= "0.55"
+        />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal"
+        app:layout_constraintTop_toBottomOf="@id/BIN_textView_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintGuide_percent = "0.30"
+        />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="@string/requestInfoFragment_header_text"
+        style="@style/info"
+        />
+
+    <TextView
+        android:id="@+id/BIN_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/headers"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/binTextView_text"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/BIN_textView_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/BIN_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="424436"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/shemeNetwork_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/horizontal"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/headers"
+        android:text="@string/sheme_header_text"/>
+
+    <TextView
+        android:id="@+id/shemeNetworkInfo_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/shemeNetwork_header"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/info"
+        tools:text="Visa"/>
+
+    <TextView
+        android:id="@+id/type_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/horizontal"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        style="@style/headers"
+        android:text="@string/typeText"/>
+
+    <TextView
+        android:id="@+id/typeInfo_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/type_header"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        style="@style/info"
+        tools:text="Credit"/>
+
+    <TextView
+        android:id="@+id/bank_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/brandInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        style="@style/headers"
+        android:layout_marginTop="@dimen/marginVerticalRequestFragmentInfo"
+        android:text="@string/bankText"/>
+
+    <TextView
+        android:id="@+id/bankInfo_fragmentCardInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bank_header"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/info"
+        tools:text="JSCB AK BARS OJSC"/>
+
+    <TextView
+        android:id="@+id/bankWebSiteInfo_fragmentCardInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bankInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/purple_700"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="www.akbars.ru"/>
+
+    <TextView
+        android:id="@+id/bankNumbeInfo_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bankWebSiteInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        tools:text="(99871) 120-81-06"/>
+
+    <TextView
+        android:id="@+id/brand_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/shemeNetworkInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/headers"
+        android:text="@string/brand_text"
+        android:layout_marginTop="@dimen/marginVerticalRequestFragmentInfo"/>
+
+    <TextView
+        android:id="@+id/brandInfo_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/brand_header"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/info"
+        tools:text="Traditional"/>
+
+    <TextView
+        android:id="@+id/prepaid_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/typeInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        style="@style/headers"
+        android:text="@string/prepaid_text"
+        android:layout_marginTop="@dimen/marginVerticalRequestFragmentInfo"/>
+
+    <TextView
+        android:id="@+id/prepaidInfo_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/prepaid_header"
+        app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        style="@style/info"
+        tools:text="No"/>
+
+    <TextView
+        android:id="@+id/country_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/prepaidInfo_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/headers"
+        android:text="@string/country_text"
+        android:layout_marginTop="@dimen/marginVerticalRequestFragmentInfo"/>
+
+
+    <TextView
+        android:id="@+id/emoji_textView_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/country_header"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        tools:text="🇷🇺"/>
+
+    <TextView
+        android:id="@+id/countryInfo_textView_fragmentRequestInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/SecondColumn"
+        app:layout_constraintTop_toBottomOf="@id/country_header"
+        app:layout_constraintStart_toEndOf="@id/emoji_textView_fragmentCardInfo"
+        tools:text="Russian Federation"
+        style="@style/info"/>
+
+    <TextView
+        android:id="@+id/latitudeInfo_textView_fragmentCardInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/countryInfo_textView_fragmentRequestInfo"
+        app:layout_constraintStart_toStartOf="@id/firstColumn"
+        tools:text="@string/latitude"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/cardNumber_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/latitudeInfo_textView_fragmentCardInfo"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/headers"
+        android:text="@string/card_number_text"
+        android:layout_marginTop="@dimen/marginVerticalRequestFragmentInfo"/>
+
+    <TextView
+        android:id="@+id/length_cardInfoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardNumber_header"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/headers"
+        android:text="@string/length_text"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/lengthInfo_CardInfoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/length_cardInfoFragment"
+        app:layout_constraintStart_toEndOf="@id/firstColumn"
+        style="@style/info"
+        tools:text="16"/>
+
+    <TextView
+        android:id="@+id/luhn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardNumber_header"
+        app:layout_constraintStart_toEndOf="@id/cardNumber_header"
+        android:layout_marginStart="20dp"
+        style="@style/headers"
+        android:text="@string/luhn_text"
+        android:textSize="8sp"/>
+
+    <TextView
+        android:id="@+id/luhnInfo_CardInfoFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/luhn"
+        app:layout_constraintStart_toStartOf="@id/luhn"
+        style="@style/info"
+        tools:text="YES"/>
+
+    <Button
+        android:id="@+id/return_button_cardInfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/returnText"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
