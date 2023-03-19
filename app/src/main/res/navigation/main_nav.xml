@@ -20,8 +20,11 @@
         android:label="fragment_card_info"
         tools:layout="@layout/fragment_card_info" >
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="bin"
+            app:argType="string" />
+        <argument
+            android:name="fromDataBase"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

@@ -9,41 +9,41 @@ data class CardItemRoom(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
     @ColumnInfo(name = "bin")
-    val bin: String,
+    val bin: String?,
     @ColumnInfo(name = "length")
     val length: Int?,
     @ColumnInfo(name = "luhn")
     val luhn: Boolean?,
     @ColumnInfo(name = "sheme")
-    val sheme: String,
+    val sheme: String?,
     @ColumnInfo(name = "type")
-    val type: String,
+    val type: String?,
     @ColumnInfo(name = "brand")
-    val brand: String,
+    val brand: String?,
     @ColumnInfo(name = "prepaid")
     val prepaid: Boolean?,
     @ColumnInfo(name = "numeric")
-    val numeric: String,
+    val numeric: String?,
     @ColumnInfo(name = "alpha2")
-    val alpha2: String,
+    val alpha2: String?,
     @ColumnInfo(name = "countryName")
-    val countryName:String,
+    val countryName:String?,
     @ColumnInfo(name = "emoji")
-    val emoji:String,
+    val emoji:String?,
     @ColumnInfo(name = "currence")
-    val currency: String,
+    val currency: String?,
     @ColumnInfo(name = "latitude")
     val latitude: Int?,
     @ColumnInfo(name = "longitude")
     val longitude:Int?,
     @ColumnInfo(name = "bankName")
-    val bankName: String,
+    val bankName: String?,
     @ColumnInfo(name = "url")
-    val url: String,
+    val url: String?,
     @ColumnInfo(name = "phone")
-    val phone: String,
+    val phone: String?,
     @ColumnInfo(name = "city")
-    val city: String,
+    val city: String?,
     @ColumnInfo(name = "dateRequest")
-    val dateRequest: String
+    val dateRequest: String?
 )

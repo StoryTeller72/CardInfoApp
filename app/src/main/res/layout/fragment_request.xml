@@ -18,7 +18,9 @@
         android:layout_marginHorizontal="16dp"
         android:gravity="center"
         android:inputType="number"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:saveEnabled="false"
+        />
 
     <Button
         android:id="@+id/request_button_requestFragment"

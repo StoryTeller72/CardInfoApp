@@ -41,7 +41,7 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = CardAdapter(this, viewModel.allCard){
-            val action = HistoryFragmentDirections.actionHistoryFragmentToCardInfoFragment(it.id?: 0)
+            val action = HistoryFragmentDirections.actionHistoryFragmentToCardInfoFragment(it.bin?: "",true)
             this.findNavController().navigate(action)
         }
         binding.recyclerViewHistoryFragment.adapter = adapter

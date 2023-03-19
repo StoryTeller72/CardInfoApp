@@ -1,22 +1,19 @@
 package com.example.cardinfoapp.data.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.example.cardinfoapp.data.Converter
 import com.example.cardinfoapp.data.retrofit.models.CardInfoRetrofit
 import com.example.cardinfoapp.data.room.CardDao
 import com.example.cardinfoapp.data.room.CardItemRoom
-import com.example.cardinfoapp.domain.CardRepositoryInterface
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
+import retrofit2.Response
 import java.time.LocalDate
 
-class CardRepositoryRoomImpl(private val roomDao: CardDao) : CardRepositoryInterface {
+class CardRepositoryRoomImpl(private val roomDao: CardDao){
 
-    override fun getAllCard() = roomDao.getAllCards().asLiveData()
+    fun getAllCard() = roomDao.getAllCards().asLiveData()
 
-    override suspend fun addNewCard(cardRetrofit: CardInfoRetrofit, bin: String) {
+    suspend fun addNewCard(cardRetrofit: Response<CardInfoRetrofit>, bin: String) {
         val dateTime = LocalDate.now().toString()
 
         val card = Converter().cardInfoRetrofitToCardItemRoom(cardRetrofit, dateTime, bin)
@@ -24,9 +21,7 @@ class CardRepositoryRoomImpl(private val roomDao: CardDao) : CardRepositoryInter
     }
 
 
-    override suspend fun getCard(id: Int): CardItemRoom {
-        val current = coroutineScope { roomDao.getCard(id) }
-        Log.d("testDate", "repository ${current.toString()}")
-        return current
+    suspend fun getCard(bin: String): CardItemRoom {
+        return coroutineScope { roomDao.getCard(bin) }
     }
 }

@@ -4,15 +4,21 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.cardinfoapp.data.repository.CardRepositoryRoomImpl
 import com.example.cardinfoapp.data.retrofit.CardInfoApi
+import com.example.cardinfoapp.data.retrofit.models.CardInfoRetrofit
 import com.example.cardinfoapp.data.room.CardItemRoom
-import com.example.cardinfoapp.domain.MakeResponseUseCase
+import com.example.cardinfoapp.utils.Resource
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class CardInfoViewModel(
-    private val makeResponseUseCase: MakeResponseUseCase,
-    private val repositoryRoomImpl: CardRepositoryRoomImpl
+    private val repositoryRoomImpl: CardRepositoryRoomImpl,
+    private val retrofitApi: CardInfoApi
     ): ViewModel()
 {
+
+    private var _currentCardRes : MutableLiveData<Resource<CardInfoRetrofit>> = MutableLiveData()
+    val currentCardRes: LiveData<Resource<CardInfoRetrofit>>
+        get() = _currentCardRes
 
 
     private var _currentCard = MutableLiveData<CardItemRoom>()
@@ -24,15 +30,30 @@ class CardInfoViewModel(
     val allCard: LiveData<List<CardItemRoom>>
         get() = _allCardsLis
 
-    fun makeResponse(bin: String){
-       makeResponseUseCase.execute(bin)
+     fun makeResponse(bin: String) {
+         _currentCardRes.postValue(Resource.Loading())
+         viewModelScope.launch {
+             val response = retrofitApi.getCardByBin(bin)
+             _currentCardRes.postValue(handleCardResponse(bin, response))
+
+         }
+     }
+
+    private fun handleCardResponse(bin: String, response: Response<CardInfoRetrofit>): Resource<CardInfoRetrofit>{
+        if (response.isSuccessful){
+            response.body()?.let { resultResponse ->
+                viewModelScope.launch {
+                    repositoryRoomImpl.addNewCard(response, bin)
+                }
+                return Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
     }
 
-    fun getCard(id:Int){
-//        Log.d("testDate", bin)
+    fun getCard(bin: String){
         viewModelScope.launch {
-            _currentCard.value = repositoryRoomImpl.getCard(id)
-            Log.d("testDate", "view model${_currentCard.value.toString()}")
+            _currentCard.value = repositoryRoomImpl.getCard(bin)
         }
     }
 }
@@ -41,12 +62,11 @@ class CardInfoViewModelFactory(
     private val repository: CardRepositoryRoomImpl,
     private val retrofitApi: CardInfoApi
     ): ViewModelProvider.Factory{
-        private val makeResponseUseCase = MakeResponseUseCase(retrofitApi, repository)
 
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CardInfoViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CardInfoViewModel(makeResponseUseCase, repository) as T
+                return CardInfoViewModel( repository, retrofitApi) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

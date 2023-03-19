@@ -20,7 +20,7 @@ class CardInfoApplication: Application() {
         return interceptor
     }
 
-    val client by lazy {
+    private val client by lazy {
         OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build()

@@ -1,4 +1,5 @@
 package com.example.cardinfoapp.data.room
+import android.util.Log
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,7 +14,6 @@ interface CardDao {
     @Query("SELECT * FROM cards")
     fun getAllCards(): Flow<List<CardItemRoom>>
 
-    @Query("SELECT * FROM cards WHERE id=:id")
-    suspend fun getCard(id: Int): CardItemRoom
-
+    @Query("SELECT * FROM cards WHERE bin=:bin LIMIT 1")
+    suspend fun getCard(bin: String): CardItemRoom
 }
