@@ -119,20 +119,25 @@
 
     <TextView
         android:id="@+id/bankInfo_fragmentCardInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/bank_header"
         app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        app:layout_constraintEnd_toEndOf="parent"
         style="@style/info"
         tools:text="JSCB AK BARS OJSC"/>
 
     <TextView
         android:id="@+id/bankWebSiteInfo_fragmentCardInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/bankInfo_fragmentCardInfo"
         app:layout_constraintStart_toEndOf="@id/SecondColumn"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/purple_700"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxLines="1"
         tools:text="www.akbars.ru"/>
 
     <TextView
@@ -202,8 +207,9 @@
 
     <TextView
         android:id="@+id/countryInfo_textView_fragmentRequestInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/SecondColumn"
         app:layout_constraintTop_toBottomOf="@id/country_header"
         app:layout_constraintStart_toEndOf="@id/emoji_textView_fragmentCardInfo"
         tools:text="Russian Federation"
