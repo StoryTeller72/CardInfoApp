@@ -266,4 +266,12 @@
         app:layout_constraintStart_toStartOf="@id/luhn"
         style="@style/info"
         tools:text="YES"/>
+
+    <Button
+        android:id="@+id/return_button_cardInfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/returnText"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

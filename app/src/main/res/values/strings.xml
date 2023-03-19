@@ -19,4 +19,5 @@
     <string name="newRequest_text">Новый запрос</string>
     <string name="requestInfoFragment_header_text">Информация о запросе</string>
     <string name="lastRequestText">Последний запрос</string>
+    <string name="returnText">Вернуться</string>
 </resources>

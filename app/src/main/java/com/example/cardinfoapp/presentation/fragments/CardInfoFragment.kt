@@ -50,6 +50,9 @@ class CardInfoFragment : Fragment() {
         } else {
             updateFromNetwork(bin)
         }
+        binding.returnButtonCardInfoFragment.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun updateFromDb(bin: String) {
@@ -58,7 +61,7 @@ class CardInfoFragment : Fragment() {
             binding.prepaidInfoFragmentCardInfo.text = if (it.prepaid == true) "YES" else "NO"
             binding.lengthInfoCardInfoFragment.text =
                 if (it.length != 0) it.length.toString() else "?"
-            binding.luhnInfoCardInfoFragment.text = it.luhn.toString()
+            binding.luhnInfoCardInfoFragment.text = if(it.luhn == true) "YES" else "NO"
             binding.bankInfoFragmentCardInfo.text = it.bankName
             binding.bankWebSiteInfoFragmentCardInfo.text = it.url
             binding.bankNumbeInfoFragmentCardInfo.text = it.phone
@@ -84,7 +87,8 @@ class CardInfoFragment : Fragment() {
                         if (response.data?.prepaid == true) "YES" else "NO"
                     binding.lengthInfoCardInfoFragment.text =
                         if (response.data?.number?.length != 0) response.data?.number?.length.toString() else "?"
-                    binding.luhnInfoCardInfoFragment.text = response.data?.number?.luhn.toString()
+                    binding.luhnInfoCardInfoFragment.text =
+                        if(response.data?.number?.luhn == true) "YES" else "NO"
                     binding.bankInfoFragmentCardInfo.text = response.data?.bank?.name
                     binding.bankWebSiteInfoFragmentCardInfo.text = response.data?.bank?.url
                     binding.bankNumbeInfoFragmentCardInfo.text = response.data?.bank?.phone
